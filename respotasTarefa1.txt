@@ -1,0 +1,49 @@
+RESPOSTAS - Emanuele Schlemmer Thomazzoni	
+
+1- GLSL é a linguagem de programação de shaders que é usada na OpenGL, ela é usada principalmente para manipular as etapas de processamento gráfico no pipeline programável da OpenGL.
+
+-Shaders obrigatórios:
+Vertex Shader: processa cada vértice de forma individual, transforma as posições dos vértices e aplica outras operações como rotação e movimentação.
+Fragment Shader: processa os fragmentos (pixels) definindo as cores de cada um, também aplica efeitos como textura e luz.
+
+2- Primitivas gráficas são as formas básicas que o OpenGL desenha, ex (pontos, linhas, triângulos), essas mesmas são formadas a partir de vértices. Esses vértices são armazenados em buffers de memória, e o principal mecanismo para armazená-los é o VBO
+
+3-VBO: é um buffer que armazena os dados dos vértices como posições e cores.
+VAO: objeto que junta todos estados necessários para renderizar um determinado objeto
+EBO: buffer que armazena índices que definem como os vértices no VBO devem ser combinados para formar as formas primitivas, usado também para evitar duplicar vértices e economizar memória.
+
+
+RELAÇÃO:
+[VAO]
+ | 
+ |----> [VBO] -> armazena dados dos vértices (posições, cores, etc.)
+ |
+ |----> [EBO] -> armazena os índices (quais vértices formarão as primitivas)
+
+
+-5, 6, 7 (no arquivo source.cpp código)
+
+-8:
+a)
+Os possíveis vértices VBO seriam:
+float vértices[] = { // Posição // Cor (RGB) 
+0.0f, 1.0f, 1.0f, 0.0f, 0.0f, // P1 (vermelho) 
+-1.0f, 0.0f, 0.0f, 1.0f, 0.0f, // P2 (verde) 
+1.0f, 0.0f, 0.0f, 0.0f, 1.0f // P3 (azul) };
+
+No VAO seria implementado:
+Um atributo para a posição (x, y), que são dois floats consecutivos.
+Um atributo para a cor, que são três floats consecutivos (R, G, B).
+
+No EBO seria implementado:
+EBO = [0, 1, 2] // Índices dos vértices P1, P2 e P3
+
+b)
+No vertex shader seriam identificados: 
+-Posição do vértice : coordenadas (x, y) dos vértices. 
+-Cor do vértice: as cores são representadas por três valores (R, G, B), e também receberiam os dados do VBO.
+
+(Não tive sucesso implementado isso no código)
+
+9 (no código)
+
